@@ -1,0 +1,16 @@
+.preview {
+  margin-top: 100px;
+  width: 100%;
+}
+
+.card-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.deal-button {
+  font-size: 20px;
+  height: 40px;
+  width: 100px;
+}
