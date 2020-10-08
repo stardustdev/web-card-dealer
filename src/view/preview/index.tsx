@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import CardView from 'src/components/Card';
+import Player from 'src/containers/Player';
 import Card from 'src/models/Card';
-import CardBackImage from 'src/assets/images/card-back.jpg';
 import { AppState } from 'src/redux/reducer';
 import { suffleCardsCreator, dealCardsCreator } from 'src/redux/card/actions';
+import UserAvatar from 'src/assets/images/avatar.jpg';
+import BotAvatar from 'src/assets/images/bot.png';
 import './styles.css';
+
+const initialCard = {
+  image: '',
+  value: '',
+  suit: '',
+  code: '',
+};
 
 const Preview: React.FC<{}> = (): JSX.Element => {
   const dispatch = useDispatch();
   const [isDealed, setIsDealed] = useState<boolean>(true);
-  const [hostCard, setHostCard] = useState<Card>();
-  const [botCard, setBotCard] = useState<Card>();
+  const [hostCard, setHostCard] = useState<Card>(initialCard);
+  const [botCard, setBotCard] = useState<Card>(initialCard);
 
   const { deckId, cards } = useSelector((state: AppState) => state.card);
 
@@ -33,12 +41,24 @@ const Preview: React.FC<{}> = (): JSX.Element => {
   return (
     <div className="preview">
       <div className="card-group">
-        <CardView width={200} imageSource={hostCard?.image || CardBackImage} />
-        <CardView width={200} imageSource={botCard?.image || CardBackImage} />
+        <Player
+          user={{ name: 'You', avatar: UserAvatar }}
+          avatarWidth={100}
+          cardInfo={hostCard}
+          cardWidth={200}
+        />
+        <Player
+          user={{ name: 'You', avatar: BotAvatar }}
+          avatarWidth={100}
+          cardInfo={botCard}
+          cardWidth={200}
+        />
       </div>
-      <button className="deal-button" onClick={handleDeal}>
-        {isDealed ? 'Shuffle' : 'Deal'}
-      </button>
+      <div className="buttons">
+        <button className="deal-button" onClick={handleDeal}>
+          {isDealed ? 'Shuffle' : 'Deal'}
+        </button>
+      </div>
     </div>
   );
 };

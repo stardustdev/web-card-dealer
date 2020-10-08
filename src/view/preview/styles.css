@@ -1,6 +1,8 @@
 .preview {
   margin-top: 100px;
-  width: 100%;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card-group {
@@ -13,4 +15,12 @@
   font-size: 20px;
   height: 40px;
   width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.buttons {
+  display: flex;
+  width: 100%;
 }
