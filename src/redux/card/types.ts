@@ -6,12 +6,10 @@ export enum CardActionTypes {
   FETCH_ERROR = 'DEAL_CARDS',
 }
 
-type Maybe<T> = T | null | undefined;
-
 export interface CardState {
   cards: Card[];
-  deckId: Maybe<string>;
-  error: Maybe<string>;
+  deckId: string;
+  error: string;
 }
 
 interface ShuffleCardsAction {

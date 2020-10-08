@@ -3,8 +3,8 @@ import { CardState, ICardAction, CardActionTypes } from './types';
 
 const initialState: CardState = {
   cards: [],
-  deckId: null,
-  error: null,
+  deckId: '',
+  error: '',
 };
 
 const reducer = (state = initialState, action: ICardAction): CardState => {
