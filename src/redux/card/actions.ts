@@ -5,6 +5,7 @@ import Card from 'src/models/Card';
 import { CardActionTypes, ICardAction } from './types';
 
 export const suffleCardsCreator = () => (dispatch: Dispatch) => {
+  dispatch(clearCardState());
   axios
     .get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
     .then((response) => dispatch(shuffleCards(response.data.deck_id)))
@@ -26,6 +27,11 @@ export const shuffleCards = (payload: string): ICardAction => ({
 export const dealCards = (payload: Card[]): ICardAction => ({
   type: CardActionTypes.DEAL_CARDS,
   payload,
+});
+
+export const clearCardState = (): ICardAction => ({
+  type: CardActionTypes.CLEAR_CARD_STATE,
+  payload: null,
 });
 
 export const fetchError = (payload: string): ICardAction => ({

@@ -28,6 +28,9 @@ const reducer = (state = initialState, action: ICardAction): CardState => {
         error: payload as string,
       };
 
+    case CardActionTypes.CLEAR_CARD_STATE:
+      return initialState;
+
     default:
       return state;
   }

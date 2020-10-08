@@ -4,6 +4,7 @@ export enum CardActionTypes {
   SHUFFLE_CARDS = 'SHUFFLE_CARDS',
   DEAL_CARDS = 'DEAL_CARDS',
   FETCH_ERROR = 'DEAL_CARDS',
+  CLEAR_CARD_STATE = 'CLEAR_CARD_STATE',
 }
 
 export interface CardState {
@@ -27,7 +28,13 @@ interface fetchErrorAction {
   payload: string;
 }
 
+interface clearCardState {
+  type: string;
+  payload: null | undefined;
+}
+
 export type ICardAction =
   | ShuffleCardsAction
   | DealCardsAction
-  | fetchErrorAction;
+  | fetchErrorAction
+  | clearCardState;
