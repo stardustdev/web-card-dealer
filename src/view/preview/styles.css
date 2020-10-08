@@ -24,3 +24,9 @@
   display: flex;
   width: 100%;
 }
+
+.result {
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
+}
